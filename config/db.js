@@ -1,16 +1,16 @@
-// config/db.js
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-async function connectDB() {
-  const uri = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/ai_interview_prep';
+const connectDB = async () => {
   try {
-    mongoose.set('strictQuery', true);
-    await mongoose.connect(uri);
-    console.log('✅ MongoDB connected');
-  } catch (err) {
-    console.error('❌ MongoDB connection error:', err.message);
-    throw err;
+    await mongoose.connect(process.env.MONGO_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log("✅ MongoDB connected");
+  } catch (error) {
+    console.error("❌ MongoDB connection failed:", error.message);
+    process.exit(1);
   }
-}
+};
 
 module.exports = connectDB;
