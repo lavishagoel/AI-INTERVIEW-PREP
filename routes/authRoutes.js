@@ -1,14 +1,10 @@
-// routes/authRoutes.js
 const express = require("express");
 const router = express.Router();
 
-// Example route
-router.post("/register", (req, res) => {
-  res.send("User registration route");
-});
-
-router.post("/login", (req, res) => {
-  res.send("User login route");
+// Signup route
+router.post("/signup", (req, res) => {
+    const { name, email, password } = req.body;
+    res.json({ msg: "Signup route working", data: { name, email, password } });
 });
 
 module.exports = router;
