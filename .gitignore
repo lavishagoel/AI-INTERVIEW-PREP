@@ -1,3 +1,4 @@
 node_modules
 .env
 .DS_Store
+git commit -m "Initial commit: setup server with MongoDB and routes"
